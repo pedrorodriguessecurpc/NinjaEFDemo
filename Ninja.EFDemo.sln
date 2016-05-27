@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5388E4
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konoha.Tester", "Konoha.Tester\Konoha.Tester.csproj", "{1EF1F57A-D477-4898-9F58-9BEC41373B85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{363F8924-CE68-4C26-A42D-2535DC28084B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{363F8924-CE68-4C26-A42D-2535DC28084B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{363F8924-CE68-4C26-A42D-2535DC28084B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF1F57A-D477-4898-9F58-9BEC41373B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF1F57A-D477-4898-9F58-9BEC41373B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF1F57A-D477-4898-9F58-9BEC41373B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF1F57A-D477-4898-9F58-9BEC41373B85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
