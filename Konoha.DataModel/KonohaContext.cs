@@ -1,5 +1,4 @@
-﻿using Konoha.Classes;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Konoha.DataModel
 {

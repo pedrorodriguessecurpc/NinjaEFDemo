@@ -51,14 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clan.cs" />
+    <Compile Include="ElementType.cs" />
+    <Compile Include="Justu.cs" />
     <Compile Include="KonohaContext.cs" />
     <Compile Include="KonohaContext.Views.cs" />
     <Compile Include="Migrations\201605271352314_initialDatabase.cs" />
     <Compile Include="Migrations\201605271352314_initialDatabase.Designer.cs">
       <DependentUpon>201605271352314_initialDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605271532243_changedClanName.cs" />
+    <Compile Include="Migrations\201605271532243_changedClanName.Designer.cs">
+      <DependentUpon>201605271532243_changedClanName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shinobi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -67,14 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Konoha.Classes\Konoha.Classes.csproj">
-      <Project>{eaa101e8-2151-4db3-b536-e26b68dc9e46}</Project>
-      <Name>Konoha.Classes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201605271352314_initialDatabase.resx">
       <DependentUpon>201605271352314_initialDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605271532243_changedClanName.resx">
+      <DependentUpon>201605271532243_changedClanName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

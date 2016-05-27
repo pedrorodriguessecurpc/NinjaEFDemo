@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure.MappingViews;
 
 [assembly: DbMappingViewCacheTypeAttribute(
     typeof(Konoha.DataModel.KonohaContext),
-    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsf47ebf8e38333c0f8eba811a5bb90f3a70ee323747ce5f41a08aea220a4f55b9))]
+    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsd59183645234946b398e71e71fb6425116adf64df009325d78c21185f93fc410))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,14 +23,14 @@ namespace Edm_EntityMappingGeneratedViews
     /// Implements a mapping view cache.
     /// </summary>
     [GeneratedCode("Entity Framework Power Tools", "0.9.0.0")]
-    internal sealed class ViewsForBaseEntitySetsf47ebf8e38333c0f8eba811a5bb90f3a70ee323747ce5f41a08aea220a4f55b9 : DbMappingViewCache
+    internal sealed class ViewsForBaseEntitySetsd59183645234946b398e71e71fb6425116adf64df009325d78c21185f93fc410 : DbMappingViewCache
     {
         /// <summary>
         /// Gets a hash value computed over the mapping closure.
         /// </summary>
         public override string MappingHashValue
         {
-            get { return "f47ebf8e38333c0f8eba811a5bb90f3a70ee323747ce5f41a08aea220a4f55b9"; }
+            get { return "d59183645234946b398e71e71fb6425116adf64df009325d78c21185f93fc410"; }
         }
 
         /// <summary>
@@ -93,11 +93,11 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Clan
-        [CodeFirstDatabaseSchema.Clan](T1.Clan_Id, T1.Clan_ClanName)
+        [CodeFirstDatabaseSchema.Clan](T1.Clan_Id, T1.Clan_Name)
     FROM (
         SELECT 
             T.Id AS Clan_Id, 
-            T.ClanName AS Clan_ClanName, 
+            T.Name AS Clan_Name, 
             True AS _from0
         FROM KonohaContext.Clans AS T
     ) AS T1");
@@ -111,21 +111,22 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Justu
-        [CodeFirstDatabaseSchema.Justu](T3.Justu_Id, T3.Justu_Name, T3.[Justu.Shinobi_Id])
+        [CodeFirstDatabaseSchema.Justu](T3.Justu_Id, T3.Justu_Name, T3.Justu_ElementType, T3.[Justu.Shinobi_Id])
     FROM (
-        SELECT T1.Justu_Id, T1.Justu_Name, T2.[Justu.Shinobi_Id], T1._from0, (T2._from1 AND T2._from1 IS NOT NULL) AS _from1
+        SELECT T1.Justu_Id, T2.Justu_Name, T2.Justu_ElementType, T1.[Justu.Shinobi_Id], T2._from0, T1._from1
         FROM  (
-            SELECT 
-                T.Id AS Justu_Id, 
-                T.Name AS Justu_Name, 
-                True AS _from0
-            FROM KonohaContext.Justus AS T) AS T1
-            LEFT OUTER JOIN (
             SELECT 
                 Key(T.Justu_Shinobi_Source).Id AS Justu_Id, 
                 Key(T.Justu_Shinobi_Target).Id AS [Justu.Shinobi_Id], 
                 True AS _from1
-            FROM KonohaContext.Justu_Shinobi AS T) AS T2
+            FROM KonohaContext.Justu_Shinobi AS T) AS T1
+            INNER JOIN (
+            SELECT 
+                T.Id AS Justu_Id, 
+                T.Name AS Justu_Name, 
+                CAST(T.ElementType AS [Edm.Int32]) AS Justu_ElementType, 
+                True AS _from0
+            FROM KonohaContext.Justus AS T) AS T2
             ON T1.Justu_Id = T2.Justu_Id
     ) AS T3");
         }
@@ -158,11 +159,11 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Clans
-        [Konoha.DataModel.Clan](T1.Clan_Id, T1.Clan_ClanName)
+        [Konoha.DataModel.Clan](T1.Clan_Id, T1.Clan_Name)
     FROM (
         SELECT 
             T.Id AS Clan_Id, 
-            T.ClanName AS Clan_ClanName, 
+            T.Name AS Clan_Name, 
             True AS _from0
         FROM CodeFirstDatabase.Clan AS T
     ) AS T1");
@@ -176,12 +177,13 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Justus
-        [Konoha.DataModel.Justu](T1.Justu_Id, T1.Justu_Name) WITH 
+        [Konoha.DataModel.Justu](T1.Justu_Id, T1.Justu_Name, T1.Justu_ElementType) WITH 
         RELATIONSHIP(CREATEREF(KonohaContext.Shinobis, ROW(T1.[Justu_Shinobi.Justu_Shinobi_Target.Id]),[Konoha.DataModel.Shinobi]),[Konoha.DataModel.Justu_Shinobi],Justu_Shinobi_Source,Justu_Shinobi_Target) 
     FROM (
         SELECT 
             T.Id AS Justu_Id, 
             T.Name AS Justu_Name, 
+            CAST(T.ElementType AS [Konoha.DataModel.ElementType]) AS Justu_ElementType, 
             True AS _from0, 
             T.Shinobi_Id AS [Justu_Shinobi.Justu_Shinobi_Target.Id]
         FROM CodeFirstDatabase.Justu AS T
@@ -211,7 +213,6 @@ namespace Edm_EntityMappingGeneratedViews
                     T.Shinobi_Id AS [Justu_Shinobi.Justu_Shinobi_Target.Id], 
                     True AS _from0
                 FROM CodeFirstDatabase.Justu AS T
-                WHERE T.Shinobi_Id IS NOT NULL
             ) AS T1
         ) AS T2
     ) AS T3");
